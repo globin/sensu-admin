@@ -13,7 +13,8 @@
           %td= user.email
           %td= user.created_at
           %td= user.admin?
-          %td= button_to "Deactivate", user, :method => :delete, :confirm => "You sure?"
+          %td= button_to "Deactivate", {:data => user, :method => :delete, :confirm => "You sure?"},
+            {:class => "btn btn-sm btn-warning"}
           %td= link_to "Edit", edit_user_path(user)
 %br
 %br

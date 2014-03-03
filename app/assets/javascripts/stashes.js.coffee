@@ -23,7 +23,7 @@ $ ->
       $.post $(this).attr("rel"), { 'key': $(self).attr("key")},
         (data) ->
           if data
-            $($(self).attr("misc")).remove()
+            self.closest('tr').remove()
             $("#stash_count").html($(".table tbody tr").length)
           else
             alert("Stash deletion failed")
@@ -35,7 +35,7 @@ $ ->
         (data) ->
           if data
             $('#delete-all-stashes-button').text("Deleted!")
-            $('tr').hide()
+            $('tbody tr').remove()
             $('h2').text("Stashes (0)")
           else
             alert("Stash deletion failed")

@@ -1,6 +1,4 @@
 class ClientsController < ApplicationController
-  before_filter :prepare_for_mobile
-
   def index
     @clients = Client.all_with_cache
   end
@@ -13,7 +11,7 @@ class ClientsController < ApplicationController
       render :json => {:code => 1, :msg => "Could not find client #{params[:client_query]}"}
     end
   end
-  
+
   def delete_client
     resp = Client.destroy(params[:key])
     Client.refresh_cache

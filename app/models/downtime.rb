@@ -15,10 +15,10 @@ class Downtime < ActiveRecord::Base
   scope :active, lambda { where("? BETWEEN start_time AND stop_time", DateTime.now) }
   scope :past, lambda { where("? > stop_time", DateTime.now) }
   scope :future, lambda { where("start_time > ?", DateTime.now) }
-  scope :all_processed, where(:processed => true)
-  scope :not_processed, where(:processed => false)
-  scope :all_completed, where(:completed => true)
-  scope :not_completed, where(:completed => false)
+  scope :all_processed, lambda { where(:processed => true) }
+  scope :not_processed, lambda { where(:processed => false) }
+  scope :all_completed, lambda { where(:completed => true) }
+  scope :not_completed, lambda { where(:completed => false) }
 
   def self.process_downtimes
     run_expired_stashes = false

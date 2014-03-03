@@ -10,24 +10,11 @@
  *
  *= require_self
  *= require_tree .
- *= require formtastic
  *= require jquery.timepicker
  *= require bootstrap-datepicker
- *= require dataTables/jquery.dataTables.bootstrap
+ *= require dataTables/jquery.dataTables.bootstrap3
+ *= require formtastic-bootstrap
  */
-
-
-.content {
-  background-color: #eee;
-  padding: 20px;
-  margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
-  -webkit-border-radius: 0 0 6px 6px;
-  -moz-border-radius: 0 0 6px 6px;
-  border-radius: 0 0 6px 6px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-  box-shadow: 0 1px 2px rgba(0,0,0,.15);
-}
 
 table.table thead .sorting,
 table.table thead .sorting_asc,
@@ -37,7 +24,7 @@ table.table thead .sorting_desc_disabled {
       cursor: pointer;
           *cursor: hand;
         }
-         
+
 table.table thead .sorting { background: image-url('sort_both.png') no-repeat center right; }
 table.table thead .sorting_asc { background: image-url('sort_asc.png') no-repeat center right; }
 table.table thead .sorting_desc { background: image-url('sort_desc.png') no-repeat center right; }

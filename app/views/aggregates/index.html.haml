@@ -41,13 +41,13 @@
                 %tr
                   %td= ov
                   %td= ok
-  %div.accordion.span8{:id => "aggregate_accordion"}
+  %div.accordion.col-xs-8{:id => "aggregate_accordion"}
     - @aggregates.each do |k,v|
       %div.row
-        %div.span8
+        %div.col-xs-8
           %div.accordion-group
             %div.accordion-heading
-              %a.accordion-toggle{:href => "#collapse_#{k}", 'data-toggle' => 'collapse', 'data-parent' => '#aggregate_accordion'} 
+              %a.accordion-toggle{:href => "#collapse_#{k}", 'data-toggle' => 'collapse', 'data-parent' => '#aggregate_accordion'}
                 = k
                 %i.icon-plus{:id => "icon_toggle_#{k}"}
             %div.accordion-body.collapse{:rel => "#{k}", :id => "collapse_#{k}"}

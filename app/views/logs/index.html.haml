@@ -1,18 +1,22 @@
 - @logs.each do |log|
-  %div{:class => "modal hide", :id => "log_modal_#{log.id}"}
-    %div.modal-header
-      %h3== Log Attributes for log id: #{log.id}
-    %div.modal-body
-      %table.table.table-striped.table-bordered
-        %tbody
-          - log.attributes.each do |k,v|
-            %tr
-              - if k == "user_id"
-                %td User
-                %td== #{log.user.email} (ID: #{log.user.id})
-              - else
-                %td= k
-                %td= v
+  .modal.fade{:id => "log_modal_#{log.id}"}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %h3== Log Attributes for log id: #{log.id}
+        .modal-body
+          %table.table.table-striped.table-bordered
+            %tbody
+              - log.attributes.each do |k,v|
+                %tr
+                  - if k == "user_id"
+                    %td User
+                    %td== #{log.user.email} (ID: #{log.user.id})
+                  - else
+                    %td= k
+                    %td= v
+        .modal-footer
+          %button.btn.btn-default{:data => {:dismiss => "modal"}} Close
 
 %table.table.table-striped
   %thead
@@ -23,12 +27,12 @@
     %th Check
     %th Type
     %th Action
-    %th Output 
+    %th Output
     %th Reason
     %th User
     %th Done At
     %th
-      
+
   %tbody
     = will_paginate @logs
     - @logs.each do |log|

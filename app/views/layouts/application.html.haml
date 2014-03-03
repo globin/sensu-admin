@@ -24,23 +24,21 @@
       %link{:rel => "shortcut icon", :href => "/favicon.ico"}
       = yield(:head)
     %body
-      %header.navbar.navbar-fixed-top
-        %nav.navbar-inner
-          .container
-            = render 'layouts/navigation'
+      .navbar.navbar-inverse.navbar-fixed-top
+        .navbar-header
+          / %button.navbar-toggle{:data_toggle => "collapse", :data_target=".navbar-collapse"}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+          = link_to "Sensu-Admin", root_path, :class => 'navbar-brand'
+        .navbar-collapse.collapse.pull-right
+          = render 'layouts/navigation'
       #main{:role => "main"}
         .container
           .content
-            .row
-              .span12
-                = render 'layouts/messages'
-                = yield
+            = render 'layouts/messages'
+            = yield
             %footer
       %center
         - if user_signed_in?
           %div{:id => "api_info_div", :style => "height: 20px; margin-top: 10px"}
-        %div
-          - if mobile_device?
-            %a{:href => "/?mobile=0", "data-ajax" => "false"} Full Site
-          - else
-            %a{:href => "/?mobile=1", "data-ajax" => "false"} Mobile Site

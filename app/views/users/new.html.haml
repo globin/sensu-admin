@@ -6,4 +6,4 @@
     = form.input :password, :as => :password
     = form.input :password_confirmation, :as => :password
     = form.input :roles, :as => :check_boxes, :collection => Role.all
-    = form.actions
+    = form.submit :class => 'btn btn-default'

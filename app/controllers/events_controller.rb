@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
   before_filter :find_events, :only => [:index, :events_table ]
-  before_filter :prepare_for_mobile
 
   def index
   end
@@ -73,10 +72,10 @@ class EventsController < ApplicationController
         format.mobile { render :json => {:code => 1, :msg => "Your comment must be at least #{min_length} characters long"} }
       end
       return false
-    end 
+    end
     return true
   end
- 
+
   def silence_client
     unless check_min_desc(params[:description])
       return
@@ -88,7 +87,7 @@ class EventsController < ApplicationController
     params[:description] = "No reason given" if params[:description].empty?
     resp = Event.silence_client(params[:client], params[:description], current_user, expire_at)
     Stash.refresh_cache
-      
+
     respond_to do |format|
       format.json { render :json => (resp.code == 201) ? {'code' => 0} : {'code' => resp.code, 'msg' => 'Error silencing client'} }
       format.mobile { render :json => (resp.code == 201).to_s }

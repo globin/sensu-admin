@@ -1,7 +1,7 @@
-%div{:class => "modal small-modal hide", :id => "client-data-modal"}
+.modal.fade#client-data-modal
 %div{:style => "display: none;", :id => "use_environments", :rel => "#{use_environments?}"}
 
-%table.table-striped.dataTable.clients_table.table{:id => "clients_table"}
+%table.table-striped.dataTable.clients_table.table.table-hover{:id => "clients_table"}
   %thead
     - if use_environments?
       %th ENV
@@ -11,7 +11,7 @@
     %th Role
     %th Last Checkin
     %th
-      
+
   %tbody
     - @clients.each do |client|
       %tr{:id => "client_row_#{client.name}", :rel => client.name}

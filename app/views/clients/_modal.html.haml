@@ -1,9 +1,13 @@
-%div.modal-header
-  %h3== Client: #{client.name}
-%div.modal-body
-  %table.table.table-striped.table-bordered
-    %tbody
-      - client.attributes.each do |k,v|
-        %tr
-          %td= k
-          %td= v
+.modal-dialog
+  .modal-content
+    .modal-header
+      %h3== Client: #{client.name}
+    .modal-body
+      %table.table.table-striped.table-bordered
+        %tbody
+          - client.attributes.each do |k,v|
+            %tr
+              %td= k
+              %td= v
+    .modal-footer
+      %button.btn.btn-default{:data => {:dismiss => "modal"}} Close

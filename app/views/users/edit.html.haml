@@ -9,19 +9,17 @@
   = f.input :email
   - if current_user.has_role? :admin
     = f.input :roles, :as => :check_boxes, :collection => Role.all
-  = f.actions
+  = f.submit :class => "btn btn-default"
 
 %br
 %br
 %h2 Change Password
 = form_for(@user, :url => { :id => @user.id, :action => "update_password" } ) do |f|
-  %div.field
+  %div.form-group
     = f.label :password, "Password"
-    %br
-    = f.password_field :password, :autocomplete => "off"
-  %div.field
+    = f.password_field :password, :autocomplete => "off", :class => "form-control"
+  %div.form-group
     = f.label :password_confirmation
-    %br
-    = f.password_field :password_confirmation
+    = f.password_field :password_confirmation, :class => "form-control"
   %div.action_container
-    = f.submit
+    = f.submit :class => 'btn btn-default'

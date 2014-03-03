@@ -17,7 +17,7 @@ $ ->
       setTimeout (() -> $('#updating_event_list').hide()), 2500
 
     setPickers = ()->
-      $('.timepicker').timepicker({  'step': 15, 'showDuration': true, 'timeFormat': 'G:i', 'scrollDefaultNow': true })
+      $('.timepicker').timepicker({ 'step': 15, 'showDuration': true, 'timeFormat': 'G:i', 'scrollDefaultNow': true })
       $('.datepicker').datepicker({ 'autoclose': true, 'dateFormat': 'd/m/yy', 'format': 'dd/mm/yyyy' })
 
     runPermanentHooks = ()->
@@ -117,7 +117,7 @@ $ ->
         bAutoWidth: false
         bJQueryUI: false
         bProcessing: false
-        sDom: "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
+        sDom: "<'row'<'col-xs-6'l><'col-xs-6'f>r>t<'row'<'col-xs-6'i><'col-xs-6'p>>"
         sWrapper: "dataTables_wrapper form-inline"
         bServerSide: false
         bSort: true
@@ -128,7 +128,11 @@ $ ->
         fnRowCallback: (nRow, aData, iDisplayIndex, iDisplayIndexFull) ->
           if aData[0] == 1
             tr = $('td', nRow).closest('tr')
-            $(tr).attr('class', 'critical-event')
+            $(tr).attr('class', 'danger')
+            return nRow
+          else if aData[0] == 2
+            tr = $('td', nRow).closest('tr')
+            $(tr).attr('class', 'warning')
             return nRow
 
     runPermanentHooks()

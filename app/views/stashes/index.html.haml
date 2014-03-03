@@ -1,36 +1,31 @@
-%div{:class => "small-modal modal hide", :id => "custom_stash_modal"}
-  %div.modal-header
-    %h3== Create stash
-  %div.modal-body
-    %br
-    %h3 Enter key
-    %input.input-xlarge{:id => "custom_stash_key_input", :placeholder => "Stash key"}
-    %p Note: No spaces, etc e.g. "silence/client_name/check_name"
-    %br
-    %br
-    %h3 Description
-    %textarea.input-xlarge{:id => "custom_stash_description", :placeholder => "Stash description", :rows => "2"}
-    %br
-    %br
-    %br
-    %h3 Expire at (Optional):
-    %div
-      %div.pull-left
-        %p Date:
-        %input.datepicker{:id => "custom_stash_date_input"}
-      %br   
-      %br
-      %br
-      %br
-      %div.pull-left
-        %p Time:
-        %input.timepicker{:id => "custom_stash_time_input"}
-    %div{:style => "height: 160px;"}
-    
-  %div.modal-footer
-    %a.stash-submit-event.btn.btn-info Submit
-    %button.btn.btn-success.create-custom-stash-working
-      Working...
+.modal#custom_stash_modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h3.modal-title Create stash
+      .modal-body
+        .form-group
+          %label{:for => "custom_stash_key_input"} Enter key
+          %input.form-control#custom_stash_key_input{:placeholder => "Stash key"}
+        %p Note: No spaces, etc e.g. "silence/client_name/check_name"
+        .form-group
+          %label{:for => "custom_stash_description"} Description
+          %textarea.form-control#custom_stash_description{:placeholder => "Stash description", :rows => "2"}
+        %label{:for => "custom_stash_date_input"} Expire at (Optional)
+        .row
+          .col-md-6
+            .form-group
+              %label{:for => "#custom_stash_date_input"} Date:
+              %input.datepicker.form-control#custom_stash_date_input
+          .col-md-6
+            .form-group
+              %label{:for => "#custom_stash_time_input"} Time:
+              %input.timepicker.form-control#custom_stash_time_input
+
+      .modal-footer
+        %a.stash-submit-event.btn.btn-info Submit
+        %button.btn.btn-success.create-custom-stash-working
+          Working...
 
 %br
 %br
@@ -58,11 +53,11 @@
     %th Expires in
     %th Set
     %th Action
-      
+
   %tbody
     - if Gem::Version.new(@sensu_version) <= Gem::Version.new("0.9.11")
       - @stashes.each_with_index do |(k,v), i|
-        = render "stash_row_legacy", :k => k, :v => v, :i => i 
+        = render "stash_row_legacy", :k => k, :v => v, :i => i
     - else
       - @stashes.each do |stash|
         = render "stash_row", :path => stash['path'], :content => stash['content']

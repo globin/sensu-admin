@@ -1,41 +1,39 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.14'
+gem 'rails', '4.0.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
 # bundle --without mysql if using sqlite
-gem 'mysql2', "~> 0.3.11", :group => :mysql 
+gem 'mysql2', "~> 0.3.11", :group => :mysql
 
 #Authentication Gems
 gem 'devise'
 gem 'cancan'
 gem 'rolify', '= 3.1'
+gem 'protected_attributes', '~>1.0.1'
 
 #API Gems
 gem 'json'
 gem 'rest-client'
 
 #Design gems
-gem 'bootstrap-sass', '= 2.1.1.0'
+gem 'bootstrap-sass', '= 3.1.1.0'
 gem 'haml-rails'
 gem 'bootstrap-will_paginate'
 gem 'formtastic'
+gem 'formtastic-bootstrap'
 
 # Jquery
 gem 'jquery-rails'
 gem 'jquery-datatables-rails'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'font-awesome-sass-rails'
-end
+gem 'sass-rails',   '~> 4.0.1'
+gem 'coffee-rails', '~> 4.0.1'
+gem 'uglifier', '>= 1.0.3'
+gem 'font-awesome-sass-rails'
 
 #JS
 gem 'therubyracer'

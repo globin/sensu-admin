@@ -1,9 +1,9 @@
 - if event.status == 1
-  %span.badge.badge-warning
+  %span.label.label-warning
     = format_status(event.status)
 - elsif event.status == 2
-  %span.badge.badge-important
+  %span.label.label-danger
     = format_status(event.status)
 - else
-  %span.badge.badge-inverse
+  %span.label.label-inverse
     = format_status(event.status)
