@@ -3,47 +3,51 @@
 - @events.each_with_index do |event,i|
   - processed_clients = []
   - len = Setting.min_desc_length.to_i
-  %div{:class => "modal small-modal hide", :id => "modal_#{event.client}_#{event.check}"}
-    %div.modal-header
-      %h3== Silence check #{event.check} on client #{event.client}
-    %div.modal-body
-      %p.pull-left Note: Your event handler must use sensu-plugin or hit the API to make use of silencing.
-      %br
-      %h3 Enter reason
-      %textarea.input-xlarge.silence-input{:id => "text_input_#{event.client}_#{event.check}", :index_id => "#{i}", :data => {:min => len}, :misc => "#{event.client}_#{event.check}", :rel => "Silence Check", :rows => "3", :type => "text", :placeholder => "Silence Check Reason"}
-      %br
-      %h3 Expire at (Optional):
-      %div
-        %p Date:
-        %input.datepicker{:id => "silence_expire_at_date_#{event.client}_#{event.check}"}
-      %div
-        %p Time:
-        %input.timepicker{:id => "silence_expire_at_time_#{event.client}_#{event.check}"}
-    %div.modal-footer
-      - if len > 0
-        %a.silence-submit-event.btn.btn-inverse{:control => "silence_submit_#{event.client}_#{event.check}", :index_id => "#{i}", :misc => "#{event.client}_#{event.check}", :rel => "/events/#{event.client}/#{event.check}/silence"} Submit
-      - else
-        %a.silence-submit-event.btn.btn-success{:control => "silence_submit_#{event.client}_#{event.check}", :index_id => "#{i}", :misc => "#{event.client}_#{event.check}", :rel => "/events/#{event.client}/#{event.check}/silence"} Submit
+  .modal.fade{:id => "modal_#{event.client}_#{event.check}"}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %h3== Silence check #{event.check} on client #{event.client}
+        .modal-body
+          %p.pull-left Note: Your event handler must use sensu-plugin or hit the API to make use of silencing.
+          %br
+          %h3 Enter reason
+          %textarea.input-xlarge.silence-input{:id => "text_input_#{event.client}_#{event.check}", :index_id => "#{i}", :data => {:min => len}, :misc => "#{event.client}_#{event.check}", :rel => "Silence Check", :rows => "3", :type => "text", :placeholder => "Silence Check Reason"}
+          %br
+          %h3 Expire at (Optional):
+          %div
+            %p Date:
+            %input.datepicker{:id => "silence_expire_at_date_#{event.client}_#{event.check}"}
+          %div
+            %p Time:
+            %input.timepicker{:id => "silence_expire_at_time_#{event.client}_#{event.check}"}
+        .modal-footer
+          - if len > 0
+            %a.silence-submit-event.btn.btn-inverse{:control => "silence_submit_#{event.client}_#{event.check}", :index_id => "#{i}", :misc => "#{event.client}_#{event.check}", :rel => "/events/#{event.client}/#{event.check}/silence"} Submit
+          - else
+            %a.silence-submit-event.btn.btn-success{:control => "silence_submit_#{event.client}_#{event.check}", :index_id => "#{i}", :misc => "#{event.client}_#{event.check}", :rel => "/events/#{event.client}/#{event.check}/silence"} Submit
 
   - unless processed_clients.include?(event.client)
     - processed_clients << event.client
-    %div{:class => "small-modal modal hide", :id => "modal_#{event.client}"}
-      %div.modal-header
-        %h3== Silence Client #{event.client}
-      %div.modal-body
-        %p.pull-left Note: Your event handler must use sensu-plugin or hit the API to make use of silencing.
-        %br
-        %h3 Enter reason
-        %textarea.input-xlarge.silence-input{:id => "text_input_#{event.client}", :index_id => "#{i}", :data => {:min => len}, :misc => "#{event.client}", :rel => "Silence Check", :rows => "3", :type => "text", :placeholder => "Silence Client Reason"}
-        %br
-        %h3 Expire at (Optional):
-        %div
-          %p Date:
-          %input.datepicker{:id => "silence_expire_at_date_#{event.client}"}
-        %div
-          %p Time:
-          %input.timepicker{:id => "silence_expire_at_time_#{event.client}"}
-      %div.modal-footer
-        %a.silence-submit-event.btn.btn-success{:control => "silence_submit_#{event.client}", :index_id => "#{i}", :misc => "#{event.client}", :rel => "/events/#{event.client}/silence"} Submit
-        - if len > 0
-          %a.silence-submit-event.btn.btn-inverse{:control => "silence_grey_submit_#{event.client}", :index_id => "#{i}", :misc => "#{event.client}"} Submit
+    .modal.fade{ :id => "modal_#{event.client}"}
+      .modal-dialog
+        .modal-content
+          .modal-header
+            %h3== Silence Client #{event.client}
+          .modal-body
+            %p.pull-left Note: Your event handler must use sensu-plugin or hit the API to make use of silencing.
+            %br
+            %h3 Enter reason
+            %textarea.input-xlarge.silence-input{:id => "text_input_#{event.client}", :index_id => "#{i}", :data => {:min => len}, :misc => "#{event.client}", :rel => "Silence Check", :rows => "3", :type => "text", :placeholder => "Silence Client Reason"}
+            %br
+            %h3 Expire at (Optional):
+            %div
+              %p Date:
+              %input.datepicker{:id => "silence_expire_at_date_#{event.client}"}
+            %div
+              %p Time:
+              %input.timepicker{:id => "silence_expire_at_time_#{event.client}"}
+          .modal-footer
+            %a.silence-submit-event.btn.btn-success{:control => "silence_submit_#{event.client}", :index_id => "#{i}", :misc => "#{event.client}", :rel => "/events/#{event.client}/silence"} Submit
+            - if len > 0
+              %a.silence-submit-event.btn.btn-inverse{:control => "silence_grey_submit_#{event.client}", :index_id => "#{i}", :misc => "#{event.client}"} Submit
